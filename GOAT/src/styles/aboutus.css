@@ -13,5 +13,14 @@
 .co-owner {margin-top: 10px;}
 .co-ownerline {margin-top: 20px;}
 
+
 .mapsection { margin-top: 30px; margin-bottom: 40px; align-items: left; margin-left: -50px; }
 
+
+.mapsection {margin-top: 90px;}
+
+
+@media (max-width: 640px){
+
+.about-img{ height: 50%;}
+}
