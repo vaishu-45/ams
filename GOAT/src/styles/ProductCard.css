@@ -1,10 +1,13 @@
 .product-section-wrapper {
   position: relative;
-
-  bottom: 50px;
+  background: #f2f2f2;   /* halka grey */
+  height:440px ;
   display: flex;
   justify-content: center;
   width: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: visible; 
   /* background: transparent; So hero is visible behind card */
 }
 
@@ -15,16 +18,17 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  /* max-width: 1400px;
-  width: 90%; */
+  
+  width: 100%;
 }
 
 /* Individual product card */
 .product-card {
   z-index: 1;
-  background: #fff;
+  background: white;
   border-radius: 20px;
-  box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 10px 60px rgba(0,0,0,0.15);
+
   overflow: hidden;
   text-align: center;
   width: 300px;
@@ -35,6 +39,7 @@
   overflow: hidden;
   transform: translateY(-10px);
   box-shadow: 0px 30px 80px rgba(0, 0, 0, 0.2);
+  z-index: 10; 
 }
 
 .product-image {
@@ -61,7 +66,7 @@
 
 .buy-btn {
   background: #1a1a1a;
-  color: #fff;
+  color: #ffffff;
   border: none;
   padding: 10px 20px;
   border-radius: 10px;
