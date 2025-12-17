@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import RelatedProducts from "../components/RelatedProducts";
+import FAQ from "../components/FAQ";
 import "../styles/product.css";
 
 const ProductPage = () => {
@@ -62,7 +63,12 @@ const ProductPage = () => {
       </div>
 
       {/* RELATED PRODUCTS */}
-      <RelatedProducts category={category} />
+      {/* <RelatedProducts category={category} /> */}
+      <RelatedProducts currentProductId={mainProduct._id} />
+
+      {/* FAQ SECTION */}
+      <FAQ />
+
     </div>
   );
 };

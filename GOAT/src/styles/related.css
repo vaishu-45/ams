@@ -1,3 +1,89 @@
+/* .related-products {
+  margin-top: 40px;
+}
+
+.related-products h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.related-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .related-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile – horizontal scroll */
+@media (max-width: 640px) {
+  .related-list {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;        /* ✅ ENABLE horizontal scroll */
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+
+  .related-list > div {
+    min-width: 220px;
+    flex-shrink: 0;
+  }
+} */
+
+
+.related-products {
+  margin-top: 40px;
+}
+
+.related-products h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+/* ✅ DEFAULT (Laptop & Desktop) */
+.related-list {
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Product card wrapper */
+.related-list > div {
+  cursor: pointer;
+}
+
+/* ✅ TABLET */
+@media (max-width: 1024px) {
+  .related-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ✅ MOBILE — horizontal scroll */
+@media (max-width: 640px) {
+  .related-list {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .related-list::-webkit-scrollbar {
+    display: none; /* hide scrollbar */
+  }
+
+  .related-list > div {
+    min-width: 180px;   /* VERY IMPORTANT */
+    flex-shrink: 0;     /* prevents collapse */
+  }
+}
 
 
 /* .related-products {
