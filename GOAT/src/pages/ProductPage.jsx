@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+// import { useCart } from "../context/CartContext";
+// import { useState } from "react";
+import AddToCartToast from "../components/AddToCart";
 import ProductCard from "../components/ProductCard";
 import RelatedProducts from "../components/RelatedProducts";
 import FAQ from "../components/FAQ";
 import "../styles/product.css";
 
-const ProductPage = () => {
+const ProductPage = ({ product }) => {
   const { category } = useParams();
+  // const { addToCart } = useCart();
   const [products, setProducts] = useState([]);
   useEffect(() => {
   console.log("Category from URL:", category);
@@ -27,6 +31,35 @@ const ProductPage = () => {
   //     .then((data) => setProducts(data))
   //     .catch((err) => console.log(err));
   // }, [category]);
+
+  const [showToast, setShowToast] = useState(false);
+
+  const addToCart = async (product) => {
+   try {
+    const res = await fetch("http://localhost:5000/api/cart/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      productId: product._id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      description: product.description,
+    }),
+  });
+
+  setShowToast(true);
+
+  setTimeout(() => {
+    setShowToast(false);
+  }, 2000);
+
+  } catch (error) {
+    console.error("Add to cart error:", error);
+  }
+
+  // alert("Added to cart");
+};
 
   if (products.length === 0) return <p>Loading...</p>;
 
@@ -58,7 +91,8 @@ const ProductPage = () => {
             )}
           </div>
 
-          <button className="add-btn">ADD +</button>
+          <button className="add-btn" onClick={() => addToCart(mainProduct)}>ADD +</button>
+          <AddToCartToast show={showToast} />
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 import MainImage from "../assets/mainimage.png";
 import Dadaji from "../assets/dadaji.png";
 import "../styles/aboutus.css";
+
 function AboutUs() {
   return (
     <div className="bg-[#f6f3ef] text-gray-800">
