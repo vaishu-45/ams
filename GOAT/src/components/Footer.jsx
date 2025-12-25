@@ -10,9 +10,15 @@ function Footer() {
             height="24"
             fill="none"
             stroke="white"
+<<<<<<< HEAD
             StrokeWidth="1.8"
             StrokeLinecap="round"
             StrokeLinejoin="round"
+=======
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+>>>>>>> e7e26ad569b1672068ef381099ac1cede293acbe
             aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5" />
             <circle cx="12" cy="12" r="3.2" />

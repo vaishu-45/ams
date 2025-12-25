@@ -86,9 +86,33 @@
   align-items: center;
   gap: 80px;
   font-size: 18px;
-   justify-content: left;
+  justify-content: left;
   padding-right: 70px;
   padding-bottom: 20px;
+  overflow: visible;
+}
+
+#nav-link-cart{
+   position: relative;
+   font-weight: 500;
+  cursor: pointer;
+}
+
+#nav-link-cart .cart-dot {
+  position: absolute;
+  top: -4px;
+  right: -10px;
+  width: 8px;
+  height: 8px;
+  background-color: #ff4d6d;
+  border-radius: 50%;
+  background: red;
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
 }
 
 .navbar-links a {
@@ -147,7 +171,7 @@
 
   .navbar-location{
     width: 30%;
-    font-size: xx-small;
+    font-size: medium;
   }
 
   .nav-loc{

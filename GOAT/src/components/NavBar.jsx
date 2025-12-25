@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, ShoppingCart, MapPin } from "lucide-react";
 import { Menu, X } from "lucide-react";
+import { useCart } from "../context/CartContext";
 import Logo from "../assets/Logo.png";
 import "../styles/NavBar.css";
 import LoginPopup from "../components/LoginPopUp";
@@ -11,6 +12,7 @@ const NavBar = () => {
   // State to control login popup visibility
   const [showLogin, setShowLogin] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { cartItems } = useCart();
 
   return (
     <nav className="navbar bg-black text-white py-2 md:py-4 lg:py-6 flex justify-between items-center h-40">
@@ -53,8 +55,9 @@ const NavBar = () => {
       {/* Right side links */}
       <div className="nav-links ">
 
-        <Link to="/Cart" className="nav-link flex items-center gap-1">
+        <Link to="/Cart" id="nav-link-cart" className="nav-link flex items-center gap-1">
           <ShoppingCart size={18} /> Cart
+           {cartItems.length > 0 && <span className="cart-dot">{cartItems.length}</span>}
         </Link>
 
         <Link to="/AboutUs" className="nav-link">
