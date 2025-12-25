@@ -7,18 +7,18 @@
 
 <div className="bg-[#f6f3ef] text-gray-800">
       {/* Hero Section */}
-      <section className="relative text-white bg-black">
-        <div className="relative h-[80vh] flex flex-col items-center justify-center text-center px-6">
-          <div className="absolute inset-0 flex justify-end">
+      <section className="hero-about text-white bg-black">
+        <div className="hero-div relative h-[80vh] flex flex-col items-center justify-center text-center px-6">
+          <div className="img-div-abt absolute inset-0 flex justify-end">
             <img
               src={MainImage} // Replace with your image path
               alt="Adarsh Mutton Shop"
-              className="about-img w-220 h-135 object-cover opacity-80 sm:rounded-none md:rounded-l-full lg:rounded-l-full"
+              className="about-img w-220 h-135 object-cover sm:rounded-none md:rounded-l-full lg:rounded-l-full"
             />
           </div>
                    
         {/* Text */}
-        <div className="relative h-[50vh]  flex flex-col items-start max-w-6xl w-full font-light">
+        <div className="about-heading relative h-[50vh]  flex flex-col items-start max-w-6xl w-full font-light">
             <h2 className="text-3xl md:text-8xl leading-tight"><em>OUR</em></h2>
             <h2 className="text-3xl md:text-8xl leading-tight"><em>LEGACY</em></h2>
             <h2 className="text-xl md:text-4xl italic text-[#EA8888] leading-tight">Since 1972</h2>
@@ -35,9 +35,9 @@
         </h3>
         <div className="line w-150 h-[3px] bg-gradient-to-r from-transparent via-black to-transparent"></div>
           <img
-            src= {Dadaji} // Replace with your founder image
+            src= {Dadaji} 
             alt="Founder"
-            className="w-100 h-100 object-cover rounded-lg"
+            className="img-dadaji w-100 h-100 object-cover rounded-lg"
           />
           <p className="dadajitext text-gray-1200 leading-relaxed max-w-6xl">
             Established in 1972 in Nagpur, serving the city for over five decades. 
@@ -57,7 +57,7 @@
         </div>
 
       {/* Owner Section */}
-       <div className=" ownerline flex items-center justify-center gap-10 my-10">
+       <div className="ownerline flex items-center justify-center gap-10 my-10">
       
       {/* Left Curve */}
      <svg
@@ -98,10 +98,9 @@
     <line x1="40" y1="30" x2="410" y2="30" stroke="black" strokeWidth="1" />
   </g>
 </svg>
-
-
-
     </div>
+
+
       <div className="owner flex flex-col items-center">
         <h3 className="text-3xl font-regular h-15">
           Mr. ASHISH ASHOK MADNE
@@ -110,7 +109,7 @@
           <img
             src= {Dadaji} // Replace with your founder image
             alt="Founder"
-            className="w-90 h-90 object-cover rounded-lg"
+            className=" img-dadaji w-90 h-90 object-cover rounded-lg"
           />
           <p className="dadajitext text-gray-1200 leading-relaxed max-w-6xl">
             Established in 1972 in Nagpur, serving the city for over five decades. 
@@ -131,7 +130,7 @@
 
 
          {/* Co-Owner Section */}
-          <div className=" co-ownerline flex items-center justify-center gap-10 my-10">
+          <div className="co-ownerline flex items-center justify-center gap-10 my-10">
       
       {/* Left Curve */}
       <svg
@@ -172,9 +171,9 @@
     <line x1="40" y1="30" x2="410" y2="30" stroke="black" strokeWidth="1" />
   </g>
 </svg>
-
-
     </div>
+
+
        <div className="co-owner flex flex-col items-center">
         <h3 className="text-3xl font-regular h-15">
           Mr. VAIBHAV ASHOK MADNE
@@ -183,7 +182,7 @@
           <img
             src= {Dadaji} // Replace with your founder image
             alt="Founder"
-            className="w-90 h-90 object-cover rounded-lg"
+            className="img-dadaji w-90 h-90 object-cover rounded-lg"
           />
           <p className="dadajitext text-gray-1200 leading-relaxed max-w-6xl">
             Established in 1972 in Nagpur, serving the city for over five decades. 
@@ -216,7 +215,7 @@
               className="rounded-lg border"
             ></iframe>
           </div>
-          <div className="md:w-1/2 text-left">
+          <div className="loc-text md:w-1/2 text-left">
             <h3 className="italic text-gray-800 mb-2">Our Location</h3>
             <p className="text-gray-600">
               Since 1972 we are serving at the same location.  
