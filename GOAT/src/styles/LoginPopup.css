@@ -1,0 +1,117 @@
+/* Backdrop covering only slightly for desktop, optional */
+.lp-sidebackdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 0; /* starts invisible */
+  z-index: 1000;
+  transition: width 0.3s ease;
+  pointer-events: none; /* only the panel is clickable */
+}
+
+.lp-sidebackdrop.visible {
+  width: 100vw; /* full width to capture clicks outside */
+  pointer-events: auto;
+}
+
+/* Sliding container from right */
+.lp-sidecontainer {
+  position: fixed;
+  top: 0;
+  right: -400px; /* hidden initially */
+  width: 375px;
+  /* max-width: 90vw; */
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  height: 830px;
+  background: #FFFCFC;
+  color: black;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  opacity: 90%;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease;
+  z-index: 1001;
+  /* overflow-y: auto; */
+}
+
+.lp-sidecontainer.slide-in {
+  right: 0; /* slide in to right corner */
+}
+
+.lp-sidecontainer.slide-out {
+  right: -400px; /* slide out */
+}
+
+/* Common styles from your original modal */
+.lp-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}
+
+.lp-logo {
+  width: 165px;
+  height: auto;
+  border-radius: 50%;
+  /* color: #ccc;
+  content-visibility: visible; */
+  background-color: #213239;
+}
+
+.lp-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.lp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lp-label {
+  font-weight: 500;
+}
+
+.lp-input {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.lp-cta {
+  background-color: #213239;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.lp-terms {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.lp-terms a {
+  font-size: 0.8rem;
+  text-align: center;
+  color: red;
+}
+.lp-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
