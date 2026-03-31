@@ -1,0 +1,26 @@
+
+
+.dadaji h3 { margin-top: 25px;}
+
+.line {margin-top: -9px;}
+
+.dadajitext { font-size: 18px; margin-top: -5px; margin-bottom: 25px; text-align: justify;}
+
+.ownerline {margin-top: 20px;}
+
+.owner {margin-top: 10px;}
+
+.co-owner {margin-top: 10px;}
+.co-ownerline {margin-top: 20px;}
+
+
+.mapsection { margin-top: 30px; margin-bottom: 40px; align-items: left; margin-left: -50px; }
+
+
+.mapsection {margin-top: 90px;}
+
+
+@media (max-width: 640px){
+
+.about-img{ height: 50%;}
+}
