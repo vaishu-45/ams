@@ -24,7 +24,7 @@ function AboutUs() {
               <em>LEGACY</em>
             </h2>
             <h2 className="text-xl md:text-4xl italic text-[#EA8888] leading-tight">
-              Since 1972
+              Since 1976
             </h2>
           </div>
         </div>
