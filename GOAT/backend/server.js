@@ -24,8 +24,12 @@ connectDB();
 // Middleware
 app.use(cors({
   origin: (origin, cb) => {
-    // Allow any localhost port + no-origin requests (mobile/curl)
-    if (!origin || /^http:\/\/localhost:\d+$/.test(origin)) return cb(null, true);
+    const allowed = [
+      /^http:\/\/localhost:\d+$/,
+      /\.vercel\.app$/,
+      /\.onrender\.com$/,
+    ];
+    if (!origin || allowed.some(r => r.test(origin))) return cb(null, true);
     cb(new Error("Not allowed by CORS"));
   },
   credentials: true,
