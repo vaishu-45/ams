@@ -92,6 +92,10 @@
     min-width: 140px;
   }
 
+  .product-card:nth-child(3) {
+    display: none;
+  }
+
   .product-image {
     height: 120px;
   }
