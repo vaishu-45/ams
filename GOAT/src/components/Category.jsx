@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE } from "../utils/api.js";
 import "../styles/Category.css";
 
 function Category() {
@@ -7,7 +8,7 @@ function Category() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/categories")
+    fetch(`${BASE}/api/categories`)
       .then((res) => res.json())
       .then((data) => setCategories(data))
       .catch((err) => console.log(err));
@@ -28,7 +29,7 @@ function Category() {
             onClick={() => navigate(`/products/${cat.name}`)}
           >
             <img
-              src={`http://localhost:5000${cat.image}`}
+              src={`${BASE}${cat.image}`}
               alt={cat.name}
               className="category-img"
             />

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getToken } from "../../utils/api.js";
 
-const BASE = "http://localhost:5000";
+const BASE = import.meta.env.VITE_API_URL?.replace("/api", "") || "https://ams-6oyz.onrender.com";
 const h = () => ({ Authorization: `Bearer ${getToken()}` });
 
 export default function AdminCustomers() {

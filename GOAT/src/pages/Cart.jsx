@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext.jsx";
-import { getUser } from "../utils/api.js";
+import { getUser, BASE } from "../utils/api.js";
 import "../styles/Cart.css";
 
 function Cart() {
@@ -43,7 +43,7 @@ function Cart() {
             cartItems.map((item) => (
               <div key={item._id} className="cart-item-card">
                 <img
-                  src={`http://localhost:5000${item.image}`}
+                  src={`${BASE}${item.image}`}
                   alt={item.name}
                   className="cart-item-img"
                 />

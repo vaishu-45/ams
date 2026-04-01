@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import RelatedProducts from "../components/RelatedProducts";
 import FAQ from "../components/FAQ";
 import { useCart } from "../context/CartContext.jsx";
+import { BASE } from "../utils/api.js";
 import "../styles/product.css";
 
 const ProductPage = () => {
@@ -13,7 +14,7 @@ const ProductPage = () => {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products/category/${encodeURIComponent(category)}`)
+    fetch(`${BASE}/api/products/category/${encodeURIComponent(category)}`)
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.log(err));
@@ -38,7 +39,7 @@ const ProductPage = () => {
       {/* ── Main product ── */}
       <div className="main-product-box">
         <div className="product-img-wrap">
-          <img src={`http://localhost:5000${p.image}`} alt={p.name} />
+          <img src={`${BASE}${p.image}`} alt={p.name} />
         </div>
 
         <div className="details">

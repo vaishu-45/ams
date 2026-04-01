@@ -6,7 +6,7 @@ import Logo from "../assets/Logo.png";
 import "../styles/NavBar.css";
 import LoginPopup from "../components/LoginPopup";
 import NavLocation from "./NavLocation";
-import { getUser } from "../utils/api.js";
+import { getUser, BASE } from "../utils/api.js";
 import { useCart } from "../context/CartContext.jsx";
 
 const NavBar = () => {
@@ -25,7 +25,7 @@ const NavBar = () => {
   useEffect(() => {
     if (!query.trim()) { setResults([]); setShowDrop(false); return; }
     const t = setTimeout(() => {
-      fetch(`http://localhost:5000/api/products/search?q=${encodeURIComponent(query)}`)
+      fetch(`${BASE}/api/products/search?q=${encodeURIComponent(query)}`)
         .then(r => r.json())
         .then(data => { setResults(data); setShowDrop(true); })
         .catch(() => {});
@@ -86,7 +86,7 @@ const NavBar = () => {
             <div className="search-dropdown">
               {results.map(p => (
                 <div key={p._id} className="search-result-item" onClick={() => handleSelect(p)}>
-                  <img src={`http://localhost:5000${p.image}`} alt={p.name} className="search-result-img" />
+                  <img src={`${BASE}${p.image}`} alt={p.name} className="search-result-img" />
                   <div className="search-result-info">
                     <p className="search-result-name">{p.name}</p>
                     <p className="search-result-cat">{p.category} · ₹{p.price}</p>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getToken } from "../../utils/api.js";
+import { getToken, BASE } from "../../utils/api.js";
 
 const statusBadge = (s) => {
   const map = { pending:"badge-yellow", confirmed:"badge-blue", processing:"badge-blue", delivered:"badge-green", cancelled:"badge-red" };
@@ -14,9 +14,9 @@ export default function Dashboard() {
     const h = { Authorization: `Bearer ${getToken()}` };
 
     Promise.all([
-      fetch("http://localhost:5000/api/admin/orders",   { headers: h }).then(r => r.json()),
-      fetch("http://localhost:5000/api/admin/products", { headers: h }).then(r => r.json()),
-      fetch("http://localhost:5000/api/admin/users",    { headers: h }).then(r => r.json()),
+      fetch(`${BASE}/api/admin/orders`,   { headers: h }).then(r => r.json()),
+      fetch(`${BASE}/api/admin/products`, { headers: h }).then(r => r.json()),
+      fetch(`${BASE}/api/admin/users`,    { headers: h }).then(r => r.json()),
     ]).then(([orders, products, users]) => {
       setStats({
         orders:    orders.length,

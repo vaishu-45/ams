@@ -1,4 +1,5 @@
 const BASE_URL = import.meta.env.VITE_API_URL || "https://ams-6oyz.onrender.com/api";
+export const BASE = BASE_URL.replace("/api", "");
 
 // Store/retrieve token from localStorage
 export const getToken = () => localStorage.getItem("token");

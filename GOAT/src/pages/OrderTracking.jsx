@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getToken } from "../utils/api.js";
+import { getToken, BASE } from "../utils/api.js";
 import "../styles/OrderTracking.css";
 
 const STEPS = [
@@ -20,7 +20,7 @@ export default function OrderTracking() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/orders/${id}`, {
+    fetch(`${BASE}/api/orders/${id}`, {
       headers: { Authorization: `Bearer ${getToken()}` },
     })
       .then(r => r.json())

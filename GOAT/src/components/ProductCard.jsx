@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCart } from "../context/CartContext.jsx";
+import { BASE } from "../utils/api.js";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -20,7 +21,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="rel-card">
       <div className="rel-img-wrap">
-        <img src={`http://localhost:5000${product.image}`} alt={product.name} />
+        <img src={`${BASE}${product.image}`} alt={product.name} />
       </div>
 
       <div className="rel-info">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { fetchProfile, updateProfile, fetchMyOrders, removeToken, removeUser, getUser, getToken } from "../utils/api.js";
+import { fetchProfile, updateProfile, fetchMyOrders, removeToken, removeUser, getUser, getToken, BASE } from "../utils/api.js";
 import "../styles/Profile.css";
 
 const TABS = ["Order History", "Rewards", "Saved Address", "Wallet"];
@@ -42,7 +42,7 @@ function Profile() {
     }
     if (!window.confirm("Cancel this order?")) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${order._id}/cancel`, {
+      const res = await fetch(`${BASE}/api/orders/${order._id}/cancel`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${getToken()}` },
       });
@@ -135,7 +135,7 @@ function Profile() {
                       <div className="order-items-list">
                         {order.items.map((item, i) => (
                           <div key={i} className="order-item">
-                            {item.image && <img src={`http://localhost:5000${item.image}`} alt={item.name} className="order-item-img" />}
+                            {item.image && <img src={`${BASE}${item.image}`} alt={item.name} className="order-item-img" />}
                             <p>{item.name} × {item.quantity} — ₹{item.price * item.quantity}</p>
                           </div>
                         ))}

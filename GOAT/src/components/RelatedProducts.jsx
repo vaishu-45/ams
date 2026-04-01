@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE } from "../utils/api.js";
 import ProductCard from "./ProductCard";
 import "../styles/related.css";
 
@@ -9,7 +10,7 @@ const RelatedProducts = ({ currentProductId }) => {
 
   useEffect(() => {
     if (!currentProductId) return;
-    fetch(`http://localhost:5000/api/products/random/${currentProductId}`)
+    fetch(`${BASE}/api/products/random/${currentProductId}`)
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error(err));

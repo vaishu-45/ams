@@ -49,7 +49,7 @@ export default function Checkout() {
         quantity: i.quantity,
       }));
 
-      const res = await fetch("http://localhost:5000/api/orders", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || "https://ams-6oyz.onrender.com/api"}/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({
