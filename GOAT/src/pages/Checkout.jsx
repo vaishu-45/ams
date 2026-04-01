@@ -41,8 +41,9 @@ export default function Checkout() {
       const token = getToken();
       if (!token) { navigate("/"); return; }
 
+      const isValidObjectId = (id) => /^[a-f\d]{24}$/i.test(String(id));
       const items = cartItems.map(i => ({
-        product: i._id,
+        ...(isValidObjectId(i._id) ? { product: i._id } : {}),
         name: i.name,
         image: i.image || "",
         price: i.price,
@@ -73,7 +74,7 @@ export default function Checkout() {
   };
 
   // ── Step 0: Delivery ──
-  const StepDelivery = () => (
+  const renderDelivery = () => (
     <div className="chk-form">
       <h3 className="chk-step-title">Delivery Details</h3>
       <div className="chk-row">
@@ -113,7 +114,7 @@ export default function Checkout() {
   );
 
   // ── Step 1: Payment ──
-  const StepPayment = () => (
+  const renderPayment = () => (
     <div className="chk-form">
       <h3 className="chk-step-title">Payment Method</h3>
       <div className="chk-payment-options">
@@ -144,7 +145,7 @@ export default function Checkout() {
   );
 
   // ── Step 2: Confirm ──
-  const StepConfirm = () => (
+  const renderConfirm = () => (
     <div className="chk-form">
       <h3 className="chk-step-title">Review & Confirm</h3>
       <div className="chk-review-box">
@@ -176,7 +177,7 @@ export default function Checkout() {
   );
 
   // ── Step 3: Success ──
-  const StepSuccess = () => (
+  const renderSuccess = () => (
     <div className="chk-success">
       <div className="chk-success-icon">✅</div>
       <h2>Order Placed Successfully!</h2>
@@ -212,10 +213,10 @@ export default function Checkout() {
             </div>
           )}
 
-          {step === 0 && <StepDelivery />}
-          {step === 1 && <StepPayment />}
-          {step === 2 && <StepConfirm />}
-          {step === 3 && <StepSuccess />}
+          {step === 0 && renderDelivery()}
+          {step === 1 && renderPayment()}
+          {step === 2 && renderConfirm()}
+          {step === 3 && renderSuccess()}
         </div>
 
         {/* Right: Order summary (hide on success) */}

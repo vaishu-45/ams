@@ -1,5 +1,6 @@
 import express from "express";
 import Product from "../models/Product.js";
+import Order from "../models/Order.js";
 import mongoose from "mongoose";
 
 const router = express.Router();
@@ -17,6 +18,31 @@ router.get("/search", async (req, res) => {
       ],
     }).limit(10);
     res.json(products);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// GET /api/products/top-selling — top 3 most ordered products
+router.get("/top-selling", async (req, res) => {
+  try {
+    const top = await Order.aggregate([
+      { $unwind: "$items" },
+      { $match: { "items.product": { $exists: true, $ne: null } } },
+      { $group: { _id: "$items.product", totalSold: { $sum: "$items.quantity" } } },
+      { $sort: { totalSold: -1 } },
+      { $limit: 3 },
+      { $lookup: { from: "products", localField: "_id", foreignField: "_id", as: "product" } },
+      { $unwind: "$product" },
+      { $replaceRoot: { newRoot: { $mergeObjects: ["$product", { totalSold: "$totalSold" }] } } },
+    ]);
+
+    // fallback: agar orders nahi hain toh random 3 products
+    if (top.length < 3) {
+      const fallback = await Product.find({}).limit(3);
+      return res.json(fallback);
+    }
+    res.json(top);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
