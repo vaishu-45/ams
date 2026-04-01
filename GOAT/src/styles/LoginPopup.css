@@ -106,6 +106,19 @@
   text-align: center;
   color: red;
 }
+/* LoginPopup mobile fix */
+@media (max-width: 480px) {
+  .lp-sidecontainer {
+    width: 100vw;
+    right: -100vw;
+    border-radius: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .lp-sidecontainer.slide-in { right: 0; }
+  .lp-sidecontainer.slide-out { right: -100vw; }
+}
+
 .lp-close {
   position: absolute;
   top: 10px;

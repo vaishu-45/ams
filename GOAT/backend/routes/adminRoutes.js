@@ -43,5 +43,17 @@ router.put("/orders/:id/payment", async (req, res) => {
 // Users
 router.get("/users", getAllUsers);
 router.delete("/users/:id", deleteUser);
+router.put("/users/:id/role", async (req, res) => {
+  try {
+    const User = (await import("../models/User.js")).default;
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    user.role = user.role === "admin" ? "user" : "admin";
+    await user.save();
+    res.json({ message: `Role updated to ${user.role}`, role: user.role });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 export default router;

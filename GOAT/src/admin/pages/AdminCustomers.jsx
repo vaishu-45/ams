@@ -16,6 +16,13 @@ export default function AdminCustomers() {
     load();
   };
 
+  const handleRoleToggle = async (id, currentRole) => {
+    const action = currentRole === "admin" ? "Remove Admin" : "Make Admin";
+    if (!confirm(`${action} for this user?`)) return;
+    await fetch(`${BASE}/api/admin/users/${id}/role`, { method: "PUT", headers: h() });
+    load();
+  };
+
   return (
     <div>
       <h2 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: 20 }}>Customers ({users.length})</h2>
@@ -33,7 +40,13 @@ export default function AdminCustomers() {
                 <td>{u.email || "—"}</td>
                 <td><span className={`badge ${u.role === "admin" ? "badge-blue" : "badge-grey"}`}>{u.role}</span></td>
                 <td style={{ fontSize: "0.8rem", color: "#aaa" }}>{new Date(u.createdAt).toLocaleDateString()}</td>
-                <td>
+                <td style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <button
+                    className={`adm-btn adm-btn-sm ${u.role === "admin" ? "adm-btn-danger" : "adm-btn-success"}`}
+                    onClick={() => handleRoleToggle(u._id, u.role)}
+                  >
+                    {u.role === "admin" ? "Remove Admin" : "Make Admin"}
+                  </button>
                   {u.role !== "admin" && (
                     <button className="adm-btn adm-btn-danger adm-btn-sm" onClick={() => handleDelete(u._id)}>Delete</button>
                   )}

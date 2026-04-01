@@ -342,4 +342,14 @@
 @media (max-width: 768px) {
   .adm-form { grid-template-columns: 1fr; }
   .adm-content { padding: 16px; }
+  .adm-card { overflow-x: auto; }
+  .adm-table { min-width: 500px; }
+  .adm-header { padding: 12px 16px; }
+  .adm-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .sidebar-open .adm-sidebar { width: 180px; }
+  .adm-stats { grid-template-columns: 1fr 1fr; }
+  .adm-stat-card .stat-value { font-size: 1.5rem; }
 }

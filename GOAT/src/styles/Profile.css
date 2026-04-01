@@ -306,6 +306,10 @@
     gap: 16px;
   }
 
+  .profile-actions {
+    flex-wrap: wrap;
+  }
+
   .profile-body {
     flex-direction: column;
     padding: 20px;
@@ -331,6 +335,23 @@
 
   .profile-edit-form {
     margin: 16px 20px;
+  }
+
+  .order-row {
+    flex-direction: column;
+  }
+
+  .order-card {
+    padding: 16px;
+  }
+
+  .order-btns {
+    flex-wrap: wrap;
+  }
+
+  .btn-track, .btn-cancel {
+    flex: 1;
+    text-align: center;
   }
 }
 
