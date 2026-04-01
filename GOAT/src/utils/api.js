@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://ams-6oyz.onrender.com/api";
 
 // Store/retrieve token from localStorage
 export const getToken = () => localStorage.getItem("token");
