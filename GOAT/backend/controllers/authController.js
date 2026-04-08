@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import axios from "axios";
 import User from "../models/User.js";
 
 const generateToken = (id) =>
@@ -71,4 +72,69 @@ export const login = async (req, res) => {
 // POST /api/auth/logout
 export const logout = (_req, res) => {
   res.json({ message: "Logged out successfully" });
+};
+
+// In-memory OTP store (works for single server; fine for this project)
+const otpStore = new Map(); // phone -> { otp, expiresAt }
+
+// POST /api/auth/forgot-password
+export const forgotPassword = async (req, res) => {
+  try {
+    const { phone } = req.body;
+    if (!phone) return res.status(400).json({ message: "Phone is required" });
+
+    const user = await User.findOne({ phone });
+    if (!user) return res.status(404).json({ message: "No account found with this phone number" });
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    otpStore.set(phone, { otp, expiresAt: Date.now() + 10 * 60 * 1000 });
+
+    // Send OTP via Fast2SMS
+    try {
+      await axios.get("https://www.fast2sms.com/dev/bulkV2", {
+        params: {
+          authorization: process.env.FAST2SMS_API_KEY,
+          variables_values: otp,
+          route: "otp",
+          numbers: phone,
+        },
+      });
+    } catch (smsErr) {
+      console.error("SMS send failed:", smsErr.message);
+      // Still log OTP as fallback
+      console.log(`OTP for ${phone}: ${otp}`);
+    }
+
+    res.json({ message: "OTP sent successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// POST /api/auth/reset-password
+export const resetPassword = async (req, res) => {
+  try {
+    const { phone, otp, newPassword } = req.body;
+    if (!phone || !otp || !newPassword)
+      return res.status(400).json({ message: "Phone, OTP and new password are required" });
+
+    const record = otpStore.get(phone);
+    if (!record) return res.status(400).json({ message: "OTP not requested or expired" });
+    if (Date.now() > record.expiresAt) {
+      otpStore.delete(phone);
+      return res.status(400).json({ message: "OTP expired. Please request again" });
+    }
+    if (record.otp !== otp) return res.status(400).json({ message: "Invalid OTP" });
+
+    const user = await User.findOne({ phone });
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    user.password = newPassword;
+    await user.save();
+    otpStore.delete(phone);
+
+    res.json({ message: "Password reset successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
