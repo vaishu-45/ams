@@ -91,18 +91,19 @@ export const forgotPassword = async (req, res) => {
 
     // Send OTP via Fast2SMS
     try {
-      await axios.get("https://www.fast2sms.com/dev/bulkV2", {
-        params: {
+      await axios.post("https://www.fast2sms.com/dev/bulkV2", {
+        sender_id: "FSTSMS",
+        message: `Your OTP for Adarsh Mutton Shop is: ${otp}. Valid for 10 minutes.`,
+        language: "english",
+        route: "p",
+        numbers: phone,
+      }, {
+        headers: {
           authorization: process.env.FAST2SMS_API_KEY,
-          message: `Your OTP for Adarsh Mutton Shop password reset is: ${otp}. Valid for 10 minutes.`,
-          language: "english",
-          route: "q",
-          numbers: phone,
         },
       });
     } catch (smsErr) {
-      console.error("SMS send failed:", smsErr.message);
-      // Still log OTP as fallback
+      console.error("SMS send failed:", smsErr.response?.data || smsErr.message);
       console.log(`OTP for ${phone}: ${otp}`);
     }
 
