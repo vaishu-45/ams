@@ -94,8 +94,9 @@ export const forgotPassword = async (req, res) => {
       await axios.get("https://www.fast2sms.com/dev/bulkV2", {
         params: {
           authorization: process.env.FAST2SMS_API_KEY,
-          variables_values: otp,
-          route: "otp",
+          message: `Your OTP for Adarsh Mutton Shop password reset is: ${otp}. Valid for 10 minutes.`,
+          language: "english",
+          route: "q",
           numbers: phone,
         },
       });
