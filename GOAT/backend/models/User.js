@@ -1,0 +1,39 @@
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+
+const userSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: [true, "Name is required"], trim: true },
+    email: {
+      type: String,
+      unique: true,
+      sparse: true,
+      lowercase: true,
+      trim: true,
+    },
+    phone: {
+      type: String,
+      unique: true,
+      sparse: true,
+      trim: true,
+    },
+    password: { type: String, select: false },
+    role: { type: String, enum: ["user", "admin"], default: "user" },
+    address: { type: String, default: "" },
+  },
+  { timestamps: true }
+);
+
+// Hash password before save — promise-based (no next callback)
+userSchema.pre("save", async function () {
+  if (!this.isModified("password") || !this.password) return;
+  const salt = await bcrypt.genSalt(12);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Compare password
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return bcrypt.compare(enteredPassword, this.password);
+};
+
+export default mongoose.model("User", userSchema);

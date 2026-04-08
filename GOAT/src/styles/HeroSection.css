@@ -1,0 +1,162 @@
+
+
+
+.hero {
+  position: relative;
+  background-color: #000000;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  height: 80vh;
+  padding-bottom: 80px; /* room for card overlap */
+}
+
+/* Text Section */
+.hero-text {
+   z-index: 2;
+   width: 70%;
+   padding-bottom: 10%;
+   padding-left: 7%;
+}
+
+.hero-text h1 {
+  text-align: left;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.hero-text em {
+  font-style: italic;
+}
+
+/* Circular Images (Left & Right) */
+.hero-image {
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-image img {
+  object-fit: cover;
+  opacity: 85%;
+}
+
+/* Left image placement */
+.hero-left {
+  width: 612px;
+  height: 408px;  
+  left: -220px;
+  bottom: 0%;
+  border-top-left-radius: 300px;
+  border-top-right-radius: 300px; 
+  /* border-bottom-right-radius: 400; */
+}
+
+/* Right image placement */
+.hero-right {
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;  
+  top: 20px;
+  right: 0;
+  /* top: 0; */
+  transform: translateY(-10%);
+}
+
+@media (max-width: 640px){
+
+  .hero {
+    height: auto;
+    min-height: 260px;
+    padding: 60px 0 100px;
+    align-items: flex-start;
+  }
+
+  .hero-left {
+    width: 220px;
+    height: 200px;
+    left: -60px;
+    bottom: 0;
+  }
+
+  .hero-right {
+    width: 28%;
+    top: 0;
+    transform: translateY(0);
+  }
+
+  .hero-text {
+    width: 100%;
+    padding: 0 16px 0 130px;
+    z-index: 3;
+  }
+
+  .hero-text h1 {
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 767px){
+
+  .hero {
+    height: 420px;
+  }
+
+  .hero-right {
+    width: 28%;
+  }
+
+  .hero-left {
+    width: 360px;
+    height: 300px;
+    left: -70px;
+  }
+
+  .hero-text {
+    width: 85%;
+    padding-left: 200px;
+    padding-bottom: 10%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 1023px){
+
+  .hero-right {
+    width: 32%;
+  }
+
+  .hero-left {
+    width: 420px;
+    height: 300px;
+    left: -70px;
+  }
+
+  .hero-text {
+    width: 85%;
+    padding-left: 220px;
+    padding-bottom: 15%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (min-width: 1023px) and (max-width: 1135px){
+
+  .hero-text {
+    width: 90%;
+    padding-bottom: 28%;
+    padding-left: 10%;
+  }
+}

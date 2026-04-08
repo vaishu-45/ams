@@ -1,0 +1,119 @@
+@media (max-width: 640px){
+
+.ttb{
+    align-items: center;
+   flex-direction: column;
+   width: fit-content;
+}
+
+.footer-in-it{
+    flex-direction: column;
+}
+
+.icon-div{
+    height: 40px;
+}
+
+.the-three-blocks{
+    width: 80%;
+    align-self: center;
+}
+
+.col-1,.col-2,.col-3{
+    height: fit-content;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.neeche-ka{
+    height: 40px;
+    align-items: center; 
+}
+
+.img-div{
+    justify-items: center;
+}
+
+.logo-img{
+    width: 50%;
+}
+
+}
+
+@media (min-width: 640px) and (max-width: 768px){
+
+.footer-in-it{
+    align-items: center;
+   flex-direction: column;
+}
+
+.logo-icon{
+    height: 50%;
+}
+
+.img-div{
+    justify-items: center;
+}
+
+.logo-img{
+    width: 30%;
+    height: 30%;
+}
+
+.icon-div{
+    height: 50%;
+    margin-bottom: 6%;
+}
+
+.the-three-blocks{
+     width: 90%;
+}
+
+.ttb{
+    align-items: center;
+    height: 150px;
+    font-size: medium;
+}
+
+.col-1,.col-2{
+    width: 30%;
+}
+
+.col-3{
+    width: 40%;
+}
+
+.neeche-ka{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    height: 40px;
+}
+
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+.footer-in-it{
+    height: 300px;
+    width: fit-content;
+}
+
+.logo-icon{
+width: 30%;
+}
+
+.the-three-blocks{
+    width: 65%;
+}
+
+.logo-img{
+    height: 80%;
+}
+
+.icon-div{
+    height: 20%;
+}
+
+}
+
